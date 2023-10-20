@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>notfishvr.dev</title>
+	<link rel="canonical" href="https://notfishvr.dev/discord.html" />
+        <meta property="og:title" content="notfishvr.dev">
+        <meta property="og:description" content="notfishvr.dev is a really cool domain thank you poiu for buying it">
+        <meta property="og:image" content="cdn-sub/assets/EpicAvatar.png">
+        <meta property="og:url" content="https://notfishvr.dev">
+        <link rel="icon" type="image/x-icon" href="cdn-sub/assets/EpicFavicon.ico">
+        <script>
+            window.onload = function() {
+                fetch('https://raw.githubusercontent.com/notfishvrdev/notfishvr.dev/main/discord_link.txt')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text(); // This returns the content of the file as text
+                    })
+                    .then(data => {
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error,"\nFallingback to vanity link. This may not allways work!");
+                    });
+            };
+        </script> 
+    </head>
+    <body>
+        <p>You should be redirected to the discord.</p>
+    </body>
+</html>
