@@ -1,6 +1,7 @@
 //VR Modules
 let VRModules = {
     1: {
+        /*
         0: "Multi Fly",
         1: "Speed Boost",
         2: "ESP (Box&Bone)",
@@ -9,8 +10,10 @@ let VRModules = {
         5: "Spinbot",
         6: "Trigger To Leave",
         7: "Water Balloons"
+        */
     },
     2: {
+        /*
         0: "Battle SilentAim",
         1: "Wall Walk",
         2: "Copy Player Gun",
@@ -18,8 +21,10 @@ let VRModules = {
         4: "Force Rock [M]",
         5: "Give Bug",
         6: "Force Infection [M]"
+        */
     },
     3: {
+        /*
         0: "Water Aura",
         1: "Crash All",
         2: "Everything Spam",
@@ -27,8 +32,10 @@ let VRModules = {
         4: "BloonCtrl (R-hand)",
         5: "No Tag Freeze",
         6: "BloonCtrl (gun)"
+        */
     },
     4: {
+        /*
         0: "Clear RPC Queue",
         1: "Bouncy Ground",
         2: "Snow Ground",
@@ -36,6 +43,7 @@ let VRModules = {
         4: "Lag Gun",
         5: "Slow All [M]",
         6: "Annoy Player Gun"
+        */
     }
 };
 
@@ -197,12 +205,12 @@ window.addEventListener("load", function() {
 
 let clickGUIPage = "Modules";
 let clickGUI = {
-    "Modules": "cdn-sub/assets/website/OMMFeatures/Modules.png",
-    "Desktop": "cdn-sub/assets/website/OMMFeatures/Desktop.png",
-    "Module Settings": "https://cdn.okaa.dev/assets/website/OMMFeatures/Module%20Settings.png",
-    "Room": "cdn-sub/assets/website/OMMFeatures/Room.png",
-    "Change Name": "https://cdn.okaa.dev/assets/website/OMMFeatures/Change%20Name.png",
-    "Comp Cheats": "https://cdn.okaa.dev/assets/website/OMMFeatures/Comp%20Cheats.png",
+    //"Modules": "cdn-sub/assets/website/OMMFeatures/Modules.png",
+    //"Desktop": "cdn-sub/assets/website/OMMFeatures/Desktop.png",
+    //"Module Settings": "https://cdn.okaa.dev/assets/website/OMMFeatures/Module%20Settings.png",
+    //"Room": "cdn-sub/assets/website/OMMFeatures/Room.png",
+    //"Change Name": "https://cdn.okaa.dev/assets/website/OMMFeatures/Change%20Name.png",
+    //"Comp Cheats": "https://cdn.okaa.dev/assets/website/OMMFeatures/Comp%20Cheats.png",
 };
 
 // for clickGUI
