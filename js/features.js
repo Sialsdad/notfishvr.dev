@@ -215,7 +215,7 @@ let clickGUI = {
 
 // for clickGUI
 window.addEventListener("load", function() {
-    let image = document.querySelector('#OMMModuleImageThing');
+    let image = document.querySelector('#notfishvrModuleImageThing');
     let buttons = {
         "Modules": document.querySelector('#Modules'),
         "Desktop": document.querySelector('#Desktop'),
