@@ -13,12 +13,34 @@ const animate = star => {
   star.style.animation = "";
 }
 
-for(const star of document.getElementsByClassName("magic-star")) {
+// Function to create and append a star element
+const createStar = () => {
+    const starContainer = document.getElementById("magic-container");
+
+    const star = document.createElement("span");
+    star.className = "magic-star";
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 512 512");
+
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", "M512 255.1 ... (your path data here)");
+
+    svg.appendChild(path);
+    star.appendChild(svg);
+    starContainer.appendChild(star);
+
+    return star;
+}
+
+// Create stars dynamically
+for (let i = 0; i < 3; i++) {
+    const star = createStar();
+
     setTimeout(() => {
         animate(star);
-        
         setInterval(() => animate(star), 1000);
-    }, index++ * (interval / 3))
+    }, index++ * (interval / 3));
 }
 
 document.addEventListener("DOMContentLoaded", function() {
