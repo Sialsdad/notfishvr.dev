@@ -1,2 +1,0 @@
-# notfishvr.dev
-notfishvr.dev
