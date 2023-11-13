@@ -1,1 +1,3 @@
+# mod_rewrite starts here
 
+RewriteEngine on
