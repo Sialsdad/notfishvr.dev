@@ -1,39 +1,46 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Function to handle the login button click
-    document.getElementById('login-button').addEventListener('click', function () {
-        // Get the values from the input fields
-        var license = document.getElementById('login-license').value;
-        var password = document.getElementById('login-password').value;
+var allUsers = [];
+var users = localStorage.getItem("users");
+var currentUser = localStorage.getItem("currentUser");
 
-        // Validate the license and password (you should replace this with your actual validation logic)
-        if (license.trim() === 'a' || password.trim() === 'a') {
-            alert('Please enter both license and password.');
-            return;
+
+if (users !== null) {
+    allUsers = JSON.parse(users);
+}
+
+
+
+function login() {
+    var email = document.querySelector("#lemail").value;
+    var password = document.querySelector("#lpass").value;
+    var errorPara = document.querySelector("#errorPara");
+
+    if (email == "" && password == "") {
+        errorPara.innerHTML = "Please fill all the inputs!";
+        setTimeout(() => {
+            errorPara.innerHTML = "";
+        }, 4000);
+    } else if (email == "") {
+        errorPara.innerHTML = "Please fill the email input!";
+        setTimeout(() => {
+            errorPara.innerHTML = "";
+        }, 4000);
+    } else if (password == "") {
+        errorPara.innerHTML = "Please fill the password input!";
+        setTimeout(() => {
+            errorPara.innerHTML = "";
+        }, 4000);
+    } else {
+
+
+        var filterUser = allUsers.filter(function (data) {
+            return data.email == email && data.password == password && data.name
+        });
+        if (filterUser.length) {
+            localStorage.setItem("currentUser", JSON.stringify(filterUser));
+            location.href = "../index.html"
+        } else {
+            alert("Please signup first!");
+            location.href = "../signup/signup.html";
         }
-
-        // Here you should make an AJAX request to your server to validate the login credentials
-        // Replace the following code with your actual server-side logic
-        // Example: assume there's a server endpoint '/login' that validates the credentials
-        fetch('/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ license: license, password: password }),
-        })
-            .then(response => response.json())
-            .then(data => {
-                // Check the response from the server
-                if (data.success) {
-                    alert('Login successful!');
-                    // Redirect to a new page or perform other actions after successful login
-                } else {
-                    alert('Login failed. Please check your credentials.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred during login.');
-            });
-    });
-});
+    }
+}
