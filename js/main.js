@@ -35,7 +35,6 @@ function login() {
         }
     }
 }
-
 function makeacc() {
     var name = document.querySelector("#sname").value;
     var password = document.querySelector("#spass").value;
