@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var password = document.getElementById('login-password').value;
 
         // Validate the license and password (you should replace this with your actual validation logic)
-        if (license.trim() === '' || password.trim() === '') {
+        if (license.trim() === 'a' || password.trim() === 'a') {
             alert('Please enter both license and password.');
             return;
         }
