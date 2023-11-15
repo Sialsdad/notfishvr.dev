@@ -22,13 +22,13 @@ function login() {
             errorPara.innerHTML = "";
         }, 4000);
     } else {
-        
         fetch('https://api64.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
                 var userIP = data.ip;
 
                 var storedIP = localStorage.getItem("userIP");
+
                 if (storedIP === null || storedIP === userIP) {
                     var filterUser = allUsers.filter(function (data) {
                         return data.name == name && data.password == password;
@@ -36,11 +36,10 @@ function login() {
 
                     if (filterUser.length) {
                         localStorage.setItem("userIP", userIP);
-
                         localStorage.setItem("currentUser", JSON.stringify(filterUser));
                         location.href = "../index.html";
                     } else {
-                        alert("no work");
+                        alert("Invalid username or password");
                     }
                 } else {
                     alert("Access denied. IP address mismatch.");
