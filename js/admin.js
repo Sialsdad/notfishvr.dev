@@ -7,7 +7,7 @@ if (users !== null) {
     allUsers = JSON.parse(users);
 }
 
-function signup() {
+function makeacc() {
     var name = document.querySelector("#sname").value;
     var password = document.querySelector("#spass").value;
     var errorPara = document.querySelector("#errorPara");
