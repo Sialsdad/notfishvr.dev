@@ -31,8 +31,7 @@ function login() {
             localStorage.setItem("currentUser", JSON.stringify(filterUser));
             location.href = "../index.html";
         } else {
-            alert("Please signup first!");
-            location.href = "../signup/signup.html";
+            alert("no work");
         }
     }
 }
