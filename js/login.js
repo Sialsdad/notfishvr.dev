@@ -6,11 +6,6 @@ if (users !== null) {
     allUsers = JSON.parse(users);
 }
 
-function generateHWID() {
-    // This is a basic example; you might need to enhance it for better uniqueness.
-    return navigator.userAgent + navigator.platform;
-}
-
 function login() {
     var password = document.querySelector("#lname").value;
     var name = document.querySelector("#lpass").value;
@@ -31,24 +26,23 @@ function login() {
             .then(response => response.json())
             .then(data => {
                 var userIP = data.ip;
-                var storedIP = localStorage.getItem("userIP");
-                var storedHWID = localStorage.getItem("userHWID");
 
-                if ((storedIP === null || storedIP === userIP) && (storedHWID === null || storedHWID === generateHWID())) {
+                var storedIP = localStorage.getItem("userIP");
+
+                if (storedIP === null || storedIP === userIP) {
                     var filterUser = allUsers.filter(function (data) {
                         return data.name == name && data.password == password;
                     });
 
                     if (filterUser.length) {
                         localStorage.setItem("userIP", userIP);
-                        localStorage.setItem("userHWID", generateHWID());
                         localStorage.setItem("currentUser", JSON.stringify(filterUser));
                         location.href = "../index.html";
                     } else {
                         alert("Invalid username or password");
                     }
                 } else {
-                    alert("Access denied. IP address or HWID mismatch.");
+                    alert("Access denied. IP address mismatch.");
                 }
             })
             .catch(error => {
