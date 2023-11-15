@@ -22,31 +22,41 @@ function login() {
             errorPara.innerHTML = "";
         }, 4000);
     } else {
-        fetch('https://api64.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
-                var userIP = data.ip;
+        // Use fingerprintjs2 to get the hardware ID
+        new Fingerprint2().get(function (hwid) {
+            var storedHWID = localStorage.getItem("userHWID");
 
-                var storedIP = localStorage.getItem("userIP");
+            if (storedHWID === null || storedHWID === hwid) {
+                fetch('https://api64.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        var userIP = data.ip;
 
-                if (storedIP === null || storedIP === userIP) {
-                    var filterUser = allUsers.filter(function (data) {
-                        return data.name == name && data.password == password;
+                        var storedIP = localStorage.getItem("userIP");
+
+                        if (storedIP === null || storedIP === userIP) {
+                            var filterUser = allUsers.filter(function (data) {
+                                return data.name == name && data.password == password;
+                            });
+
+                            if (filterUser.length) {
+                                localStorage.setItem("userIP", userIP);
+                                localStorage.setItem("userHWID", hwid);
+                                localStorage.setItem("currentUser", JSON.stringify(filterUser));
+                                location.href = "../index.html";
+                            } else {
+                                alert("Invalid username or password");
+                            }
+                        } else {
+                            alert("Access denied. IP address mismatch.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching IP address:', error);
                     });
-
-                    if (filterUser.length) {
-                        localStorage.setItem("userIP", userIP);
-                        localStorage.setItem("currentUser", JSON.stringify(filterUser));
-                        location.href = "../index.html";
-                    } else {
-                        alert("Invalid username or password");
-                    }
-                } else {
-                    alert("Access denied. IP address mismatch.");
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching IP address:', error);
-            });
+            } else {
+                alert("Access denied. Hardware ID mismatch.");
+            }
+        });
     }
 }
