@@ -1,5 +1,5 @@
 <?php
-$secret_key = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa4";
+$secret_key = "key";
 $upload_dir = "upload/";
 $domain_url = 'https://notfishvr.dev/';
 
